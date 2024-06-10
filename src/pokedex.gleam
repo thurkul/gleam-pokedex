@@ -1,5 +1,15 @@
-import gleam/io
+import lustre
+import lustre/attribute.{class}
+import lustre/element/html
 
 pub fn main() {
-  io.println("Hello from pokedex!")
+  let app =
+    lustre.element(
+      html.header([class("p-4 bg-red-500 text-white")], [
+        html.h1([class("w-full mx-auto max-w-screen-xl text-4xl font-bold")], [
+          html.text("Pokedex App"),
+        ]),
+      ]),
+    )
+  let assert Ok(_) = lustre.start(app, "#app", Nil)
 }
